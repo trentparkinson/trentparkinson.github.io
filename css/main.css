@@ -29,7 +29,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      width: 350px;
+      width: 650px;
       min-height: 300px;
       margin: 0 auto;
       box-shadow: 0 10px 50px 0 #ccc;
@@ -53,6 +53,25 @@
     input:focus {
       outline: 1px solid var(--accent);
     }
+	
+	textarea:focus {
+      outline: 1px solid var(--accent);
+    }
+	
+	textarea {
+	  appearance: none;
+	  background: #eee;
+      color: var(--purple);
+      padding: 1rem;
+      font-family: arial;
+      line-height: 1.4;
+	  width: 100%;
+	  font-size: inherit;
+	  margin-bottom: 1rem;
+	  border-radius: 3px;
+	  border: none;
+	}
+	
 
     button {
       color: #fff;
@@ -164,4 +183,22 @@
 
 	ul.posts li {
 		list-style: none;
+	}
+	
+	aside {
+		background: var(--accent); /* same color as selected state on site menu */
+		padding: 0.3em 1em;
+		border-radius: 3px;
+		color: #fff;
+		margin-bottom: 2em;
+	}
+
+	.content-head {
+	  font-weight: 400;
+	  text-transform: uppercase;
+	  letter-spacing: 0.1em;
+	  margin: 2em 0 1em;
+	}
+	.is-center {
+	  text-align: center;
 	}
