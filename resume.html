@@ -46,6 +46,28 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<style>
+		.round {
+			border-radius: 50%;
+			overflow: hidden;
+			width: 150px;
+			height: 150px;
+		}
+		.round img {
+			display: block;
+		/* Stretch 
+			  height: 100%;
+			  width: 100%; */
+		min-width: 100%;
+		min-height: 100%;
+		}
+		li {
+		  color: #2874A6; /* bullet color */
+		}
+		li p {
+		  color: gray; /* text color */
+		}
+	</style>
 
 	</head>
 	<body>
@@ -64,7 +86,7 @@
 						<ul>
 							<li><a href="index.html">Home</a></li>
 							<li><a href="projects.html">Projects</a></li>
-							<li class="active"><a href="resume.html">Resume</a></li>
+							<li class="active"><a href="resume.html">About Me</a></li>
 							<li><a href="contact.html">Contact</a></li>
 						</ul>
 					</div>
@@ -83,7 +105,7 @@
 			   			<div class="row">
 				   			<div class="col-md-6 col-md-offset-3 slider-text slider-text-bg">
 				   				<div class="slider-text-inner text-center">
-				   					<h1 align="center" font-size="200%";><strong>My Resume</h1>
+				   					<h1 align="center" font-size="200%";><strong>About Me</h1>
 										<i class="fa fa-arrow-circle-down" style="font-size:48px;color:black;"></i>
 				   				</div>
 				   			</div>
@@ -94,27 +116,73 @@
 		  	</div>
 		</aside>		
 		<div id="fh5co-about">
-			<div class="row animate-box">
-				<div class="col-md-6 col-md-offset-3 text-center heading-section">
-					<h3>My History</h3>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-				</div>
-			</div>
-
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1 text-center animate-box">
-					<p><img src="images/cover_bg_3.jpg" alt="Free HTML5 Bootstrap Template" class="img-responsive"></p>
+				<br>
+				<div class="col-md-2 col-md-offset-1 text-center animate-box">
+					<div class="round">
+						<p><img src="images/profile_pic.jpg" alt="Avatar" style="width:200px" class="img-responsive"></p>
+					</div>
 				</div>
-				<div class="col-md-8 col-md-offset-2 text-center animate-box">
+				<div class="col-md-8 text-center animate-box">
 					<div class="about-desc">
-						<h3>Hi! I'm Trent</h3>
+						<h2>Hi! I'm Trent Parkinson</h2>
 						<p>I am a Data scientist with a strong mathematical background and the ability to turn data into actionable
 						insights and communicate the results effectively. Well-versed in data gathering, data manipulation,
 						statistical inference, regression modeling, and machine learning. Flexible and willing to learn new 
 						technologies with an eagerness to always learn and solve problems.</p>
 					</div>
+					<hr>
 				</div>
 			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-3 text-left heading-section">
+					<h3 align="left"><strong>Technical Skills</strong></h3>
+					<ul>
+					<li><p>R (ggplot2, dplyr, data.table, lubridate, caret)</p></li>
+					<li><p>SQL, and relational database querying</p></li>
+					<li><p>Python (Numpy, Scipy, Pandas, matplotlib, skikit-learn)</p></li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-3 text-left heading-section">
+					<h3 align="left"><strong>Recent Experience </strong></h3>
+					<span class="fh5co-counter-label"><strong>APRIL 2015 – NOV 2017</strong></span>
+					<h3 style="color:#2874A6;"><strong><b style="word-space:2em">&nbsp;&nbsp;</b>So. Utah General Manager /<span style="color:#787878">ES Solar, St. George, Utah </span></strong></h3>
+					<ul>
+					<li><p>Managed the Southern Utah region to improve sales and ensure quality installs. </p></li>
+					<li><p>Held weekly and monthly meetings to ensure a quality team, and to reach company and personal goals. </p></li>
+					<li><p>Gathered and cleaned customer data from several different companies to import for our CRM. </p></li>
+					<li><p>Generated monthly sales reports and sales projections. </p></li>
+					<li><p>Reviewed and analyzed solar systems to guarantee the projected estimates are accurate. </p></li>
+					</ul>
+					<span class="fh5co-counter-label"><strong>JAN 2011 – DEC 2014 </strong></span>
+					<h3 style="color:#2874A6;"><strong><b style="word-space:2em">&nbsp;&nbsp;</b>Mathematics Tutor / <span style="color:#787878">DSU Tutoring Center, St. George, Utah</span></strong></h3>
+					<ul>
+					<li><p>Helped students and non-students in the fields of Statistics, Probability, Calculus, and Linear Algebra.</p></li>
+					<li><p>Specialized as a private tutor by simplifying mathematical concepts while coaching students to think critically to solve problems. </p></li>
+					<li><p>Created individual and group lesson plans to track and improve students’ progress. </p></li>
+					</ul>
+					<hr>
+				</div>
+			</div>
+			<div class="row animate-box">
+				<div class="col-md-8 col-md-offset-3 text-left heading-section">
+					<h3 align="left"><strong>Education</strong></h3>
+					<span class="fh5co-counter-label"><strong>DECEMBER 2016 </strong></span>
+					<h3 style="color:#2874A6;"><strong><b style="word-space:2em">&nbsp;&nbsp;</b>Dixie State University / <span style="color:#787878">St. George, Utah  </span></strong></h3>
+					<ul>
+					<li><p>Bachelor of Applied Science in Mathematics </p></li>
+					</ul>
+					<span class="fh5co-counter-label"><strong>MAY 2017 - CURRENT </strong></span>
+					<h3 style="color:#2874A6;"><strong><b style="word-space:2em">&nbsp;&nbsp;</b>Coursera / <span style="color:#787878">Johns Hopkins University </span></strong></h3>
+					<ul>
+					<li><p>Currently attending 10 course Data Science Specialization. </p></li>
+					</ul>
+				</div>
+			</div>
+			<br>
 		</div>
 	</div><!-- END container-wrap -->
 
