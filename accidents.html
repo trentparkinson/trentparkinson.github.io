@@ -9,9 +9,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="" />
-	<meta name="keywords" content="" />
-	<meta name="author" content="" />
+	<meta name="description" content="A brief analysis on fatal traffic accidents in the US using BigQuery and Python" />
+	<meta name="keywords" content="BigQuery,Data Visualization,US Traffic Accidents,Python" />
+	<meta name="author" content="Trent Parkinson" />
 	
 	
 
@@ -114,7 +114,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Traffic-Accidents-in-the-US-using-BigQuery">Traffic Accidents in the US using BigQuery<a class="anchor-link" href="#Traffic-Accidents-in-the-US-using-BigQuery">&#182;</a></h1><p><em>Feb 19th, 2018</em></p>
+<h1 id="Traffic-Accidents-in-the-US-using-BigQuery">Fatal Traffic Accidents in the US using BigQuery<a class="anchor-link" href="#Traffic-Accidents-in-the-US-using-BigQuery">&#182;</a></h1><p><em>Feb 19th, 2018</em></p>
 
 </div>
 </div>
@@ -138,7 +138,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="How-many-accidents-were-reported-in-each-state?">How many accidents were reported in each state?<a class="anchor-link" href="#How-many-accidents-were-reported-in-each-state?">&#182;</a></h3>
+<h3 id="How-many-accidents-were-reported-in-each-state?">How many fatal traffic accidents were reported in each state?<a class="anchor-link" href="#How-many-accidents-were-reported-in-each-state?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -375,7 +375,7 @@
             <span class="p">)</span> <span class="p">),</span>
         <span class="p">)</span> <span class="p">]</span>
 <span class="n">layout</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Accidents in United States (2016)&#39;</span><span class="p">,</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;Fatal Traffic Accidents in United States (2016)&#39;</span><span class="p">,</span>
         <span class="n">geo</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
             <span class="n">scope</span> <span class="o">=</span> <span class="s1">&#39;usa&#39;</span><span class="p">,</span>
             <span class="n">projection</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;albers usa&#39;</span> <span class="p">),</span>
@@ -422,7 +422,7 @@
 
 
 <div class="output_html rendered_html output_subarea ">
-<div id="b91f8f31-e73a-4329-8bfa-546d77fcc9f1" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("b91f8f31-e73a-4329-8bfa-546d77fcc9f1", [{"type": "choropleth", "colorscale": [[0, "rgb(220, 255, 178)"], [1, "rgb(81, 127, 25)"]], "autocolorscale": false, "showscale": false, "locations": ["TX", "CA", "FL", "GA", "NC", "PA", "OH", "IL", "MI", "TN", "NY", "AL", "SC", "MO", "AZ", "IN", "KY", "VA", "LA", "MS", "OK", "NJ", "CO", "WI", "WA", "AR", "MD", "OR", "KS", "MA", "NM", "MN", "IA", "NV", "CT", "UT", "WV", "ID", "NE", "MT", "ME", "NH", "DE", "HI", "SD", "ND", "WY", "AK", "VT", "RI", "DC"], "z": [3407, 3357, 2933, 1422, 1348, 1088, 1053, 1003, 980, 966, 965, 937, 936, 868, 865, 768, 763, 722, 704, 628, 624, 569, 558, 544, 504, 488, 472, 446, 381, 359, 358, 357, 356, 303, 281, 259, 250, 232, 194, 171, 151, 130, 116, 109, 103, 102, 100, 78, 57, 48, 26], "locationmode": "USA-states", "marker": {"line": {"color": "rgb(255, 255, 255)", "width": 2}}}], {"title": "Accidents in United States (2016)", "geo": {"scope": "usa", "projection": {"type": "albers usa"}, "showlakes": true, "lakecolor": "rgb(255, 255, 255)", "countrycolor": "rgb(255, 255, 255)"}}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
+<div id="b91f8f31-e73a-4329-8bfa-546d77fcc9f1" style="height: 525px; width: 100%;" class="plotly-graph-div"></div><script type="text/javascript">require(["plotly"], function(Plotly) { window.PLOTLYENV=window.PLOTLYENV || {};window.PLOTLYENV.BASE_URL="https://plot.ly";Plotly.newPlot("b91f8f31-e73a-4329-8bfa-546d77fcc9f1", [{"type": "choropleth", "colorscale": [[0, "rgb(220, 255, 178)"], [1, "rgb(81, 127, 25)"]], "autocolorscale": false, "showscale": false, "locations": ["TX", "CA", "FL", "GA", "NC", "PA", "OH", "IL", "MI", "TN", "NY", "AL", "SC", "MO", "AZ", "IN", "KY", "VA", "LA", "MS", "OK", "NJ", "CO", "WI", "WA", "AR", "MD", "OR", "KS", "MA", "NM", "MN", "IA", "NV", "CT", "UT", "WV", "ID", "NE", "MT", "ME", "NH", "DE", "HI", "SD", "ND", "WY", "AK", "VT", "RI", "DC"], "z": [3407, 3357, 2933, 1422, 1348, 1088, 1053, 1003, 980, 966, 965, 937, 936, 868, 865, 768, 763, 722, 704, 628, 624, 569, 558, 544, 504, 488, 472, 446, 381, 359, 358, 357, 356, 303, 281, 259, 250, 232, 194, 171, 151, 130, 116, 109, 103, 102, 100, 78, 57, 48, 26], "locationmode": "USA-states", "marker": {"line": {"color": "rgb(255, 255, 255)", "width": 2}}}], {"title": "Fatal Traffic Accidents in United States (2016)", "geo": {"scope": "usa", "projection": {"type": "albers usa"}, "showlakes": true, "lakecolor": "rgb(255, 255, 255)", "countrycolor": "rgb(255, 255, 255)"}}, {"showLink": true, "linkText": "Export to plot.ly"})});</script>
 </div>
 
 </div>
@@ -435,7 +435,7 @@
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="What-day-of-the-week-do-most-accidents-occur?">What day of the week do most accidents occur?<a class="anchor-link" href="#What-day-of-the-week-do-most-accidents-occur?">&#182;</a></h3>
+<h3 id="What-day-of-the-week-do-most-accidents-occur?">What day of the week do most of the accidents occur?<a class="anchor-link" href="#What-day-of-the-week-do-most-accidents-occur?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -844,7 +844,7 @@ UgGIiFiUCkBExKL+H4aq+K1RZ5RVAAAAAElFTkSuQmCC
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="What-times-in-the-day-are-the-worst-for-traffic-accidents?">What times in the day are the worst for traffic accidents?<a class="anchor-link" href="#What-times-in-the-day-are-the-worst-for-traffic-accidents?">&#182;</a></h3>
+<h3 id="What-times-in-the-day-are-the-worst-for-traffic-accidents?">What times in the day is the worst for these traffic accidents?<a class="anchor-link" href="#What-times-in-the-day-are-the-worst-for-traffic-accidents?">&#182;</a></h3>
 </div>
 </div>
 </div>
@@ -1297,7 +1297,7 @@ hYCIiIH9P6WLVwLTqtAmAAAAAElFTkSuQmCC
 					<p>
 						<ul class="fh5co-social-icons">
 							<li><a href="https://www.facebook.com/trent.parkinson.7"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="https://github.com/parkinsontrent425"><i class="fa fa-github"></i></a></li>
+							<li><a href="https://github.com/trentparkinson"><i class="fa fa-github"></i></a></li>
 							<li><a href="https://www.linkedin.com/in/trent-parkinson-920836120"><i class="fa fa-linkedin"></i></a></li>
 						</ul>
 					</p>
