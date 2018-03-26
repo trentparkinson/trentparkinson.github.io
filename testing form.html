@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-114517471-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-114517471-1');
+	</script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Trent Parkinson - Contact</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Contact form for Trent Parkinson" />
+	<meta name="keywords" content="contact Trent Parkinson,contact info Trent Parkinson" />
+	<meta name="author" content="Trent Parkinson" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+		<div id="fh5co-contact">
+			<aside align="center">
+			   <p><br>
+				   I would <em>love</em> to hear from you! </p>
+				   <p>Please use the <b><em>Contact Form</em></b>
+				   to send me a message.
+			   </p>
+		   </aside>
+
+			<div class="row">
+				<div class="col-md-10 col-md-push-1 animate-box">
+				<div class="form-container">
+					<form name="submit-to-google-sheet">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<input name="Name"type="text" class="form-control" placeholder="Name" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<input name="Email"type="text" class="form-control" placeholder="Email" required >
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<textarea name="Message" class="form-control" cols="30" rows="8" placeholder="Message" required></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="submit" value="Send Message" class="btn btn-primary btn-modify">
+								</div>
+							</div>
+						</div>
+					</form>
+					
+					<div class="loading js-loading is-hidden">
+						<div class="loading-spinner">
+							<svg><circle cx="25" cy="25" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg>
+						</div>
+					</div>
+
+					<p class="js-success-message is-hidden" align="center"><em>Thanks</em> for contacting me!
+						I will get back to you soon!</p>
+					<p class="js-error-message is-hidden">Error!</p>
+				</div>	
+				</div>
+			</div>
+		</div>
+
+	<script>
+		const scriptURL = 'https://script.google.com/macros/s/AKfycbxnQ-lf30GU_sHOvV_7lIbj6clmAptZJeJPQ_jdZQkcHVmYz3IO/exec'
+		const form = document.forms['submit-to-google-sheet']
+		const loading = document.querySelector('.js-loading')
+		const successMessage = document.querySelector('.js-success-message')
+		const errorMessage = document.querySelector('.js-error-message')
+
+		form.addEventListener('submit', e => {
+		  e.preventDefault()
+		  showLoadingIndicator()
+		  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			.then(response => showSuccessMessage(response))
+			.catch(error => showErrorMessage(error))
+		})
+
+		function showLoadingIndicator () {
+		  form.classList.add('is-hidden')
+		  loading.classList.remove('is-hidden')
+		}
+
+		function showSuccessMessage (response) {
+		  console.log('Success!', response)
+		  setTimeout(() => {
+			successMessage.classList.remove('is-hidden')
+			loading.classList.add('is-hidden')
+		  }, 500)
+		}
+
+		function showErrorMessage (error) {
+		  console.error('Error!', error.message)
+		  setTimeout(() => {
+			errorMessage.classList.remove('is-hidden')
+			loading.classList.add('is-hidden')
+		  }, 500)
+		}
+	</script>
+
+</body>
+</html>
