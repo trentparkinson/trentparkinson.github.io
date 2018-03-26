@@ -1,0 +1,425 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Project - NCAA 2018 March Madness</title>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="" />
+	
+	
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Oxygen:300,400" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<!-- Magnific Popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+	
+	<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="css/python_style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+	</head>
+	<body>
+		
+	<div class="fh5co-loader"></div>
+	
+	<div id="page">
+	<nav class="fh5co-nav" role="navigation">
+		<div class="container-wrap">
+			<div class="top-menu">
+				<div class="row">
+					<div class="col-xs-3">
+						<div id="fh5co-logo"><a href="index.html">Trent Parkinson</a></div>
+					</div>
+					<div class="col-xs-9 text-right menu-1">
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li class="active"><a href="projects.html">Projects</a></li>
+							<li><a href="about.html">About Me</a></li>
+							<li><a href="contact.html">Contact</a></li>
+						</ul>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</nav>
+	<div class="container-wrap">
+	<div tabindex="-1" id="notebook" class="border-box-sizing">
+	
+	
+	<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Elo-Rating-for-NCAA-2018-March-Madness-Predictions">Elo Rating for NCAA 2018 March Madness Predictions<a class="anchor-link" href="#Elo-Rating-for-NCAA-2018-March-Madness-Predictions">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Importing-necessary-libraries">Importing necessary libraries<a class="anchor-link" href="#Importing-necessary-libraries">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">log_loss</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Setting-K-value-for-elo-formula-and-setting-the-home-advantage-increase-on-elo-score">Setting K value for elo formula and setting the home advantage increase on elo score<a class="anchor-link" href="#Setting-K-value-for-elo-formula-and-setting-the-home-advantage-increase-on-elo-score">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">K</span> <span class="o">=</span> <span class="mf">20.</span>
+<span class="n">HOME_ADVANTAGE</span> <span class="o">=</span> <span class="mf">100.</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Loading-game-results-and-filtering-data-to-only-grab-games-after-2001">Loading game results and filtering data to only grab games after 2001<a class="anchor-link" href="#Loading-game-results-and-filtering-data-to-only-grab-games-after-2001">&#182;</a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">compact</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./Documents/R Scripts/March Madness Submission Data/RegularSeasonCompactResults.csv&quot;</span><span class="p">)</span>
+<span class="n">compact</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">compact</span><span class="p">[</span><span class="s1">&#39;Season&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">2002</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Creating-dictionary-for-elo-ratings-per-team">Creating dictionary for elo ratings per team<a class="anchor-link" href="#Creating-dictionary-for-elo-ratings-per-team">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">team_ids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">compact</span><span class="o">.</span><span class="n">WTeamID</span><span class="p">)</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">compact</span><span class="o">.</span><span class="n">LTeamID</span><span class="p">))</span>
+<span class="n">elo_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">team_ids</span><span class="p">),</span> <span class="p">[</span><span class="mi">1500</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">team_ids</span><span class="p">)))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Calculating-point-margin-per-game">Calculating point margin per game<a class="anchor-link" href="#Calculating-point-margin-per-game">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">compact</span><span class="p">[</span><span class="s1">&#39;spread&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">WScore</span> <span class="o">-</span> <span class="n">compact</span><span class="o">.</span><span class="n">LScore</span>
+<span class="n">compact</span><span class="p">[</span><span class="s1">&#39;w_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">compact</span><span class="p">[</span><span class="s1">&#39;l_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Defining-elo-formulas">Defining elo formulas<a class="anchor-link" href="#Defining-elo-formulas">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">elo_pred</span><span class="p">(</span><span class="n">elo1</span><span class="p">,</span> <span class="n">elo2</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">(</span><span class="mf">1.</span> <span class="o">/</span> <span class="p">(</span><span class="mf">10.</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">elo1</span> <span class="o">-</span> <span class="n">elo2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">400.</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1.</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">expected_margin</span><span class="p">(</span><span class="n">elo_diff</span><span class="p">):</span>
+    <span class="k">return</span><span class="p">((</span><span class="mf">7.5</span> <span class="o">+</span> <span class="mf">0.006</span> <span class="o">*</span> <span class="n">elo_diff</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">elo_update</span><span class="p">(</span><span class="n">w_elo</span><span class="p">,</span> <span class="n">l_elo</span><span class="p">,</span> <span class="n">margin</span><span class="p">):</span>
+    <span class="n">elo_diff</span> <span class="o">=</span> <span class="n">w_elo</span> <span class="o">-</span> <span class="n">l_elo</span>
+    <span class="n">pred</span> <span class="o">=</span> <span class="n">elo_pred</span><span class="p">(</span><span class="n">w_elo</span><span class="p">,</span> <span class="n">l_elo</span><span class="p">)</span>
+    <span class="n">mult</span> <span class="o">=</span> <span class="p">((</span><span class="n">margin</span> <span class="o">+</span> <span class="mf">3.</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.8</span><span class="p">)</span> <span class="o">/</span> <span class="n">expected_margin</span><span class="p">(</span><span class="n">elo_diff</span><span class="p">)</span>
+    <span class="n">update</span> <span class="o">=</span> <span class="n">K</span> <span class="o">*</span> <span class="n">mult</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">pred</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">update</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Running-elo-functions-for-all-regular-season-games-and-updating-elo">Running elo functions for all regular season games and updating elo<a class="anchor-link" href="#Running-elo-functions-for-all-regular-season-games-and-updating-elo">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">preds</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">69493</span><span class="p">,</span> <span class="p">(</span><span class="mi">69493</span> <span class="o">+</span> <span class="n">compact</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])):</span>
+    
+    <span class="c1"># Get key data from current row</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;WTeamID&#39;</span><span class="p">]</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;LTeamID&#39;</span><span class="p">]</span>
+    <span class="n">margin</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;spread&#39;</span><span class="p">]</span>
+    <span class="n">wloc</span> <span class="o">=</span> <span class="n">compact</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;WLoc&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Does either team get a home-court advantage?</span>
+    <span class="n">w_ad</span><span class="p">,</span> <span class="n">l_ad</span><span class="p">,</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mf">0.</span>
+    <span class="k">if</span> <span class="n">wloc</span> <span class="o">==</span> <span class="s2">&quot;H&quot;</span><span class="p">:</span>
+        <span class="n">w_ad</span> <span class="o">+=</span> <span class="n">HOME_ADVANTAGE</span>
+    <span class="k">elif</span> <span class="n">wloc</span> <span class="o">==</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span>
+        <span class="n">l_ad</span> <span class="o">+=</span> <span class="n">HOME_ADVANTAGE</span>
+    
+    <span class="c1"># Get elo updates as a result of the game</span>
+    <span class="n">pred</span><span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="n">elo_update</span><span class="p">(</span><span class="n">elo_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+</span> <span class="n">w_ad</span><span class="p">,</span>
+                              <span class="n">elo_dict</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">+</span> <span class="n">l_ad</span><span class="p">,</span> 
+                              <span class="n">margin</span><span class="p">)</span>
+    <span class="n">elo_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="n">update</span>
+    <span class="n">elo_dict</span><span class="p">[</span><span class="n">l</span><span class="p">]</span> <span class="o">-=</span> <span class="n">update</span>
+    <span class="n">preds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pred</span><span class="p">)</span>
+
+    <span class="c1"># Stores new elos in the games dataframe</span>
+    <span class="n">compact</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;w_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elo_dict</span><span class="p">[</span><span class="n">w</span><span class="p">]</span>
+    <span class="n">compact</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="s1">&#39;l_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">elo_dict</span><span class="p">[</span><span class="n">l</span><span class="p">]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Gathering-only-the-final-elo-for-each-team-in-each-season">Gathering only the final elo for each team in each season<a class="anchor-link" href="#Gathering-only-the-final-elo-for-each-team-in-each-season">&#182;</a></h5><p>Since the primary purpose of elo rating is to determine the march madness tournament results before the tournament begins.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">final_elo_per_season</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">team_id</span><span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">d</span><span class="o">.</span><span class="n">WTeamID</span> <span class="o">==</span> <span class="n">team_id</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">LTeamID</span> <span class="o">==</span> <span class="n">team_id</span><span class="p">),</span> <span class="p">:]</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="s1">&#39;DayNum&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">([</span><span class="s1">&#39;Season&#39;</span><span class="p">],</span> <span class="n">keep</span><span class="o">=</span><span class="s1">&#39;last&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">w_mask</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">WTeamID</span> <span class="o">==</span> <span class="n">team_id</span>
+    <span class="n">l_mask</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">LTeamID</span> <span class="o">==</span> <span class="n">team_id</span>
+    <span class="n">d</span><span class="p">[</span><span class="s1">&#39;season_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">w_mask</span><span class="p">,</span> <span class="s1">&#39;season_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">w_mask</span><span class="p">,</span> <span class="s1">&#39;w_elo&#39;</span><span class="p">]</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">l_mask</span><span class="p">,</span> <span class="s1">&#39;season_elo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">d</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">l_mask</span><span class="p">,</span> <span class="s1">&#39;l_elo&#39;</span><span class="p">]</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s1">&#39;team_id&#39;</span><span class="p">:</span> <span class="n">team_id</span><span class="p">,</span>
+        <span class="s1">&#39;season&#39;</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">Season</span><span class="p">,</span>
+        <span class="s1">&#39;season_elo&#39;</span><span class="p">:</span> <span class="n">d</span><span class="o">.</span><span class="n">season_elo</span>
+    <span class="p">})</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h5 id="Creating-a-csv-of-the-Season,-TeamID,-and-Elo-Rating-to-be-used-in-prediction-modeling">Creating a csv of the Season, TeamID, and Elo Rating to be used in prediction modeling<a class="anchor-link" href="#Creating-a-csv-of-the-Season,-TeamID,-and-Elo-Rating-to-be-used-in-prediction-modeling">&#182;</a></h5>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">final_elo_per_season</span><span class="p">(</span><span class="n">compact</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">team_ids</span><span class="p">]</span>
+<span class="n">season_elos</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">df_list</span><span class="p">)</span>
+
+<span class="n">season_elos</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;elos_season.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<br>
+<h4 align="center"><strong>Click <a href="https://trentparkinson.github.io/march_madness.html">here</a> to see the March Madness prediction model.</strong></h4>
+<br>
+
+    </div>
+	</div><!-- END container-wrap -->
+
+	<div class="container-wrap">
+		<footer id="fh5co-footer" role="contentinfo">
+			<div class="row copyright">
+				<div class="col-md-12 text-center">
+					<p>
+						<small class="block">&copy; 2018 - Trent Parkinson</small>
+					</p>
+					<p>
+						<ul class="fh5co-social-icons">
+							<li><a href="https://www.facebook.com/trent.parkinson.7"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://github.com/parkinsontrent425"><i class="fa fa-github"></i></a></li>
+							<li><a href="https://www.linkedin.com/in/trent-parkinson-920836120"><i class="fa fa-linkedin"></i></a></li>
+						</ul>
+					</p>
+				</div>
+			</div>
+		</footer>
+	</div><!-- END container-wrap -->
+	</div>
+
+	<div class="gototop js-top">
+		<a href="#" class="js-gotop"><i class="icon-arrow-up2"></i></a>
+	</div>
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+	<!-- Magnific Popup -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<script src="js/magnific-popup-options.js"></script>
+	<!-- Counters -->
+	<script src="js/jquery.countTo.js"></script>
+	<!-- Main -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>
+
